@@ -31,8 +31,8 @@ static int l_realtime(lua_State *L) {
 static int l_sleep(lua_State *L) {
 	double dur = lua_tonumber(L, 1);
 	struct timespec t = {
-		.tv_sec = dur;
-		.tv_nsec = (double) ((double)dur-(int)dur)*NS_IN_S;
+		.tv_sec = dur,
+		.tv_nsec = (double) ((double)dur-(int)dur)*NS_IN_S
 	};
 	nanosleep(&t, NULL);
 	return 0;
