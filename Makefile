@@ -1,6 +1,6 @@
 # Adjust to your needs. lua5.1 is ABI-Compatible with luajit.
-CFLAGS= -Os -Wall -Wextra -fPIC -I/usr/include/lua5.1 -shared
-LIBS= -llua5.1
+CFLAGS ?= -Os -Wall -Wextra -Wpedantic -fpic -I/usr/include/lua5.1
+LIBFLAGS ?= -shared
 STRIP ?= strip
 
 .PHONY: clean all
@@ -9,8 +9,11 @@ STRIP ?= strip
 all: time.so
 
 clean:
-	rm -f time.so
+	rm -f time.so time.o
 
-time.so: time.c
-	$(CC) -o $@ $(CFLAGS) $(LIBS) $<
+time.o: time.c
+	$(CC) -c -o $@ $(CFLAGS) $<
+
+time.so: time.o
+	$(CC) -o $@ $(LIBFLAGS) $<
 	$(STRIP) $@
