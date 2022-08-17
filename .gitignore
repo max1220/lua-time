@@ -1,2 +1,3 @@
 time.so
-time.o
+src/time.o
+src/time.so
