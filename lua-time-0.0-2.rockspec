@@ -1,8 +1,8 @@
 package = "lua-time"
-version = "scm-1"
+version = "0.0-1"
 source = {
 	url = "git://github.com/max1220/lua-time",
-	branch = "master"
+	tag = "0.0-1"
 }
 description = {
 	summary = "Simple binding for clock_gettime() and nanosleep()",

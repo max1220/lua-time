@@ -14,7 +14,7 @@ all: time.so
 clean:
 	rm -f time.o time.so
 
-time.o: lua-time.c
+time.o: time.c
 	$(CC) $(CFLAGS) -I$(LUA_INCDIR) -c $< -o $@
 
 time.so: time.o
